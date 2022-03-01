@@ -1,0 +1,43 @@
+<!-- Kérés részletei -->
+<div class="modal fade" [id]="'viewModal' + request.id" data-bs-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <!-- Fejléc -->
+      <div class="d-flex p-4">
+        <h5 class="modal-title">
+          {{ "APP.REQUESTS.VIEW.TITLE" | translate:{ creator: request.creator } }}
+        </h5>
+        <div class="ms-auto mt-1">
+          <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+      </div>
+      <!-- / Fejléc -->
+
+      <!-- Body -->
+      <div class="modal-body">
+
+        <div class="text-center mb-5 p-4">
+          <span>{{ "APP.REQUESTS.THEAD.SUBJECT" | translate }}:</span>
+          <p class="fw-bold">{{ request.subject | translate }}</p>
+
+          <span>{{ "APP.REQUESTS.THEAD.DATE" | translate }}:</span>
+          <p class="fw-bold">{{ request.creationDate }}</p>
+
+          <span>{{ "APP.REQUESTS.THEAD.DESCRIPTION" | translate }}:</span>
+          <p class="fw-bold">{{ request.description }}</p>
+        </div>
+
+        <div class="d-flex justify-content-between">
+          <button (click)="updateRequest('Rejected')" type="button" data-bs-dismiss="modal" class="btn bg-danger w-100 text-white px-5 me-3">
+            {{ "APP.REJECT" | translate }}
+          </button>
+          <button (click)="updateRequest('Accepted')" type="button" data-bs-dismiss="modal" class="btn background-p w-100 text-white px-5">
+            {{ "APP.ACCEPT" | translate }}
+          </button>
+        </div>
+      </div>
+      <!-- / Body -->
+    </div>
+  </div>
+</div>
+<!-- / Kérés részletei -->

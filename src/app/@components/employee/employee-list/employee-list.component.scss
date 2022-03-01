@@ -1,0 +1,6 @@
+@import "src/app/@theme/colors";
+@import "src/app/@theme/mixins/shadow";
+
+div:first-of-type:not(.card div) {
+  @include shadow-1;
+}

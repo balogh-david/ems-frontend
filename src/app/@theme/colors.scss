@@ -1,0 +1,28 @@
+$primaryColor: #1f81f2;
+$secondaryColor: #bed9fb;
+$tertiaryColor: #eef3fd;
+
+.color-p {
+  color: $primaryColor;
+}
+
+.background-p {
+  background: $primaryColor;
+}
+
+.color-s {
+  color: $secondaryColor;
+}
+
+.background-s {
+  background: $secondaryColor;
+}
+
+.color-t {
+  color: $tertiaryColor;
+}
+
+.background-t {
+  background: $tertiaryColor;
+}
+

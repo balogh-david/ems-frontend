@@ -1,0 +1,111 @@
+<!-- Kérés küldése -->
+<app-request-form (eventEmitter)="acceptEmit()" appEqualPermission="EMPLOYEE"></app-request-form>
+<!-- / Kérés küldése -->
+
+<div appPermission="EMPLOYEE">
+  <ul class="nav nav-tabs border-0" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button #rem (click)="fetchData(from, to)" class="nav-link color-p active border-0" data-bs-toggle="tab" data-bs-target="#remaining">
+        {{ "APP.REQUESTS.TABS.REMAINING" | translate }}
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button (click)="fetchData(from, to, 'Accepted')" class="nav-link color-p border-0" data-bs-toggle="tab" data-bs-target="#accepted">
+        {{ "APP.REQUESTS.TABS.ACCEPTED" | translate }}
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button (click)="fetchData(from, to, 'Rejected')" class="nav-link color-p border-0" data-bs-toggle="tab" data-bs-target="#rejected">
+        {{ "APP.REQUESTS.TABS.REJECTED" | translate }}
+      </button>
+
+    </li>
+  </ul>
+
+  <!-- Kérések -->
+  <div class="card tab-content border-0 py-3">
+    <div class="text-end pe-5 pb-3">
+      <app-pagination [numberOfRows]="requests.length" (methodCall)="fetchData($event.from, $event.howMuch, activeStatus)"></app-pagination>
+    </div>
+
+    <!-- Fennmaradó -->
+    <div class="tab-pane table-responsive fade show active" id="remaining">
+      <app-request-list-table *ngIf="requests.length; else empty">
+        <tr *ngFor="let request of requests">
+          <!-- Kérés létrehozója -->
+          <td class="align-middle fw-500 ps-3 py-3">{{ request.creator }}</td>
+          <!-- Kérés tárgya -->
+          <td class="align-middle py-3">{{ request.subject | translate }}</td>
+
+          <!-- Kérés létrehozási dátuma -->
+          <td class="align-middle py-3">{{ request.creationDate }}</td>
+
+          <!-- Funkciók -->
+          <td class="align-middle text-end">
+            <i role="button" appPermission="COMPANY" class="fas fa-info background-t p-2 me-3" data-bs-toggle="modal" [attr.data-bs-target]="'#viewModal' + request.id"></i>
+            <app-request-list-table-view (eventEmitter)="acceptEmit()" [request]="request"></app-request-list-table-view>
+          </td>
+          <!-- / Funkciók -->
+        </tr>
+      </app-request-list-table>
+    </div>
+    <!-- / Fennmaradó -->
+
+    <!-- Elfogadott -->
+    <div class="tab-pane fade" id="accepted">
+      <app-request-list-table *ngIf="requests.length; else empty">
+        <tr *ngFor="let request of requests">
+          <!-- Kérés létrehozója -->
+          <td class="align-middle fw-500 ps-3 py-3">{{ request.creator }}</td>
+          <!-- Kérés tárgya -->
+          <td class="align-middle py-3">{{ request.subject | translate }}</td>
+
+          <!-- Kérés létrehozási dátuma -->
+          <td class="align-middle py-3">{{ request.creationDate }}</td>
+
+          <!-- Funkciók -->
+          <td class="align-middle text-end">
+            <i role="button" appPermission="COMPANY"
+               (click)="withdrawRequest(request); rem.click()"
+               class="fas fa-undo-alt background-t p-2 me-3"></i>
+          </td>
+          <!-- / Funkciók -->
+        </tr>
+      </app-request-list-table>
+    </div>
+    <!-- / Elfogadott -->
+
+    <!-- Elutasított -->
+    <div class="tab-pane fade" id="rejected">
+      <app-request-list-table *ngIf="requests.length; else empty">
+        <tr *ngFor="let request of requests">
+          <!-- Kérés létrehozója -->
+          <td class="align-middle fw-500 ps-3 py-3">{{ request.creator }}</td>
+          <!-- Kérés tárgya -->
+          <td class="align-middle py-3">{{ request.subject | translate }}</td>
+
+          <!-- Kérés létrehozási dátuma -->
+          <td class="align-middle py-3">{{ request.creationDate }}</td>
+
+          <!-- Funkciók -->
+          <td class="align-middle text-end">
+            <i role="button" appPermission="COMPANY"
+               (click)="withdrawRequest(request); rem.click()"
+               class="fas fa-undo-alt background-t p-2 me-3"></i>
+          </td>
+          <!-- / Funkciók -->
+        </tr>
+      </app-request-list-table>
+    </div>
+    <!-- / Elutasított -->
+  </div>
+  <!-- / Kérések -->
+</div>
+
+<ng-template #empty>
+  <div class="text-center py-5">
+    {{ "APP.EMPTY" | translate }}
+  </div>
+</ng-template>
+
+

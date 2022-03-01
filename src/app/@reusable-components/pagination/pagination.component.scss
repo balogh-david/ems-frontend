@@ -1,0 +1,8 @@
+@import "src/app/@theme/colors";
+
+i {
+  &:hover {
+    color: $primaryColor;
+    font-weight: bold;
+  }
+}

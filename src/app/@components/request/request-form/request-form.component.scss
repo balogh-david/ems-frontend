@@ -1,0 +1,5 @@
+@import "src/app/@theme/mixins/shadow";
+
+.card {
+  @include shadow-1;
+}

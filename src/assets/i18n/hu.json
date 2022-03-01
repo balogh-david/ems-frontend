@@ -1,0 +1,109 @@
+{
+  "APP": {
+    "COMPANY": "Cég",
+    "ADMIN": "Admin",
+    "EMPLOYEE": "Alkalmazott",
+    "LOADING": "Töltés folyamatban...",
+    "NEW": "Új",
+    "BACK": "Vissza",
+    "SUBMIT": "Mentés",
+    "RESET": "Visszaállítás",
+    "EMPTY": "Még nincsenek rögzített adatok",
+    "ACCEPT": "Elfogadás",
+    "REJECT": "Elutasítás",
+    "SEND": "Küldés",
+    "NAVIGATION": {
+      "DASHBOARD": "Dashboard",
+      "EMPLOYEES": "Alkalmazottak",
+      "REQUESTS": "Kérelmek",
+      "PROFILE": "Fiók",
+      "BLOCK": {
+        "MENU": "Menü",
+        "ACCOUNT": "Fiók"
+      }
+    },
+    "EMPLOYEES": {
+      "HEADER": "Alkalmazottak listája",
+      "THEAD": {
+        "NAME": "Valódi név",
+        "USERNAME": "Felhasználónév",
+        "EMAIL": "E-mail",
+        "ROLE": "Pozíció",
+        "PHONE": "Telefonszám",
+        "PASSWORD": "Jelszó",
+        "REPEAT_PASSWORD": "Jelszó megerősítése",
+        "COMPANY": "Cégnév"
+      },
+      "ENTRIES": "Showing {{ from }} to {{ to }} of {{ total }} entries",
+      "DROPDOWN": {
+        "EDITING": "Szerkesztés",
+        "DELETE": "Törlés"
+      },
+      "FORM": {
+        "HEADER_ADD": "Új alkalmazott létrehozása",
+        "HEADER_EDIT": "{{ realName }} fiókjának szerkesztése",
+        "ERROR": {
+          "6CHAR": "A mezőnek legalább 6 karaktert kell tartalmaznia!",
+          "REQUIRED": "Mező kitöltése kötelező!",
+          "PATTERN": "Legalább 1 nagybetűt és 1 kisbetűt kell tartalmaznia!",
+          "NO_MATCH": "Jelszavak nem egyeznek!",
+          "EMAIL": "Az E-mail formátum hibás!"
+        }
+      }
+    },
+    "REQUESTS": {
+      "TABS": {
+        "REMAINING": "Fennmaradó",
+        "ACCEPTED": "Elfogadott",
+        "REJECTED": "Elutasított"
+      },
+      "THEAD": {
+        "CREATOR": "Létrehozó",
+        "SUBJECT": "Tárgy",
+        "DESCRIPTION": "Leírás",
+        "DATE": "Létrehozás ideje"
+      },
+      "VIEW": {
+        "TITLE": "{{ creator }} kérelme"
+      },
+      "CREATE": {
+        "TITLE": "Kérelem létrehozása",
+        "SUBJECTS": {
+          "TERMINATION": "Felmondási kérelem",
+          "OTHER": "Egyéb kérelem",
+          "DAYOFF": "Szabadnap iránti kérelem"
+        }
+      }
+    },
+    "LOGIN": {
+      "TITLE": "Bejelentkezés az oldalra",
+      "BTN": "Bejelentkezés",
+      "ERRORS": {
+        "INCORRECT": "A jelszó vagy a felhasználónév helytelen.",
+        "UNKNOWN": "Ismeretlen hiba történt, kérem próbálja újra később."
+      }
+    },
+    "REGISTER": {
+      "TITLE": "Hozzon létre cége fiókját, és kezdje el az alkalmazottak kezelését.",
+      "BTN": "Regisztráció",
+      "HAVE_AN_ACCOUNT": "Már van fiókja?",
+      "DONT_HAVE_ACCOUNT": "Még nincs fiókja?"
+    },
+    "ERRORS": {
+      "INVALID_FIELDS": "Töltse ki az összes mezőt a szükséges módon!"
+    },
+    "MESSAGES": {
+      "SUCCESS": "Sikeres mentés",
+      "REG": "Sikeres regisztráció",
+      "DELETE": "Sikeres törlés",
+      "WITHDRAW": "Sikeresen visszavonva",
+      "SUCCESS_UPDATE": "Sikeres módosítás",
+      "FAIL": "Sikertelen mentés",
+      "FAIL_UPDATE": "Sikertelen módosítás",
+      "UNKNOWN": "Ismeretlen hiba történt, kérem próbálja újra később."
+    },
+    "PROFILE": {
+      "TITLE": "Profil szerkesztése"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+<div class="px-2">
+  <div class="row gx-3">
+    <div *ngFor="let perm of permissionCounts" class="col-12 col-md-6 col-lg-4 mb-3">
+      <div class="card border-0 shadow-sm py-5">
+        <span class="text-center">
+          <span class="color-p h1">{{ perm.count }}</span> <br>
+          <span class="fw-500">{{ "APP." + perm.permission.toString() | translate }}</span>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

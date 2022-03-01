@@ -1,0 +1,6 @@
+i {
+  transition: transform 0.6s;
+  &.rotate {
+    transform: rotate(-90deg);
+  }
+}

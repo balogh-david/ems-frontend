@@ -1,0 +1,109 @@
+{
+  "APP": {
+    "COMPANY": "Company",
+    "ADMIN": "Admin",
+    "EMPLOYEE": "Employee",
+    "LOADING": "Loading...",
+    "NEW": "New",
+    "BACK": "Back",
+    "SUBMIT": "Submit",
+    "RESET": "Reset",
+    "EMPTY": "No data recorded yet",
+    "ACCEPT": "Accept",
+    "REJECT": "Reject",
+    "SEND": "Send",
+    "NAVIGATION": {
+      "DASHBOARD": "Dashboard",
+      "EMPLOYEES": "Employees",
+      "REQUESTS": "Requests",
+      "PROFILE": "Profile",
+      "BLOCK": {
+        "MENU": "Menu",
+        "ACCOUNT": "Account"
+      }
+    },
+    "EMPLOYEES": {
+      "HEADER": "List of Employees",
+      "THEAD": {
+        "NAME": "Real Name",
+        "USERNAME": "Username",
+        "EMAIL": "E-mail",
+        "ROLE": "Role",
+        "PHONE": "Phone Number",
+        "PASSWORD": "Password",
+        "REPEAT_PASSWORD": "Repeat Password",
+        "COMPANY": "Company name"
+      },
+      "ENTRIES": "Showing {{ from }} to {{ to }} of {{ total }} entries",
+      "DROPDOWN": {
+        "EDITING": "Editing",
+        "DELETE": "Delete"
+      },
+      "FORM": {
+        "HEADER_ADD": "Add a new Employee",
+        "HEADER_EDIT": "Edit the account of {{ realName }}",
+        "ERROR": {
+          "6CHAR": "The field must contain at least 6 characters!",
+          "REQUIRED": "Field required!",
+          "PATTERN": "Must contain at least 1 uppercase letter and 1 lowercase letter!",
+          "NO_MATCH": "Passwords do not match!",
+          "EMAIL": "The E-mail address format is invalid!"
+        }
+      }
+    },
+    "REQUESTS": {
+      "TABS": {
+        "REMAINING": "Remaining",
+        "ACCEPTED": "Accepted",
+        "REJECTED": "Rejected"
+      },
+      "THEAD": {
+        "CREATOR": "Creator",
+        "SUBJECT": "Subject",
+        "DESCRIPTION": "Description",
+        "DATE": "Creation Date"
+      },
+      "VIEW": {
+        "TITLE": "{{ creator }}'s request"
+      },
+      "CREATE": {
+        "TITLE": "Create a request",
+        "SUBJECTS": {
+          "TERMINATION": "Request for termination",
+          "OTHER": "Other request",
+          "DAYOFF": "Request for day off"
+        }
+      }
+    },
+    "LOGIN": {
+      "TITLE": "Login to page",
+      "BTN": "Login",
+      "ERRORS": {
+        "INCORRECT": "The password or username is incorrect!",
+        "UNKNOWN": "An unknown error occurred, please try again later!"
+      }
+    },
+    "REGISTER": {
+      "TITLE": "Create your company account and start managing your Employees.",
+      "BTN": "Register",
+      "HAVE_AN_ACCOUNT": "Already have an account?",
+      "DONT_HAVE_ACCOUNT": "Don't have an account yet?"
+    },
+    "ERRORS": {
+      "INVALID_FIELDS": "Fill in all fields as required"
+    },
+    "MESSAGES": {
+      "SUCCESS": "Successful save",
+      "REG": "Successful register",
+      "DELETE": "Successful delete",
+      "WITHDRAW": "Successfully withdrawn",
+      "SUCCESS_UPDATE": "Successful update",
+      "FAIL": "Unsuccessful save",
+      "FAIL_UPDATE": "Unsuccessful update",
+      "UNKNOWN": "An unknown error occurred, please try again later!"
+    },
+    "PROFILE": {
+      "TITLE": "Edit your profile"
+    }
+  }
+}

@@ -1,0 +1,142 @@
+<div class="table-responsive">
+  <div class="card border-0 pt-3">
+    <!-- Fejléc -->
+    <div class="d-flex pt-2">
+      <p class="border-start border-primary border-3 pb-4 mb-4"></p>
+      <span *ngIf="!employeeId" class="fw-500 ms-3">
+      {{ "APP.EMPLOYEES.FORM.HEADER_ADD" | translate }}
+      </span>
+      <span *ngIf="employeeId" class="text-break fw-500 ms-3">
+        {{ "APP.EMPLOYEES.FORM.HEADER_EDIT" | translate:{realName: realName.value} }}
+      </span>
+
+      <div class="ms-auto mt-n6 me-3">
+        <app-back-button [endpoint]="employeeId ? '../../' : '../'"></app-back-button>
+      </div>
+    </div>
+    <!-- / Fejléc -->
+
+    <!-- Form -->
+    <div class="container mb-4 mt-5">
+      <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <!-- Új alkalmazott neve. -->
+          <div class="col-12 col-md-6 mb-3">
+            <app-employee-form-label [label]="'APP.EMPLOYEES.THEAD.NAME'"></app-employee-form-label>
+            <input #realName type="text" class="form-control background-t border-0" formControlName="name" [required]="true"/>
+            <app-error-message
+              *ngIf="formGroup.controls.name.touched && formGroup.controls.name.invalid"
+              [errorMessage]="'APP.EMPLOYEES.FORM.ERROR.REQUIRED'">
+            </app-error-message>
+          </div>
+          <!-- / Új alkalmazott neve. -->
+
+          <!-- Új alkalmazott felhasználóneve. -->
+          <div class="col-12 col-md-6 mb-3">
+            <app-employee-form-label [label]="'APP.EMPLOYEES.THEAD.USERNAME'"></app-employee-form-label>
+            <input type="text" class="form-control background-t border-0" formControlName="userName" [required]="true"/>
+            <app-error-message
+              *ngIf="formGroup.controls.userName.touched && formGroup.controls.userName.invalid"
+              [errorMessage]="'APP.EMPLOYEES.FORM.ERROR.6CHAR'">
+            </app-error-message>
+          </div>
+          <!-- / Új alkalmazott felhasználóneve. -->
+        </div>
+
+        <div class="row">
+          <!-- Új alkalmazott telefonszáma. -->
+          <div class="col-12 col-md-6 mb-3">
+            <app-employee-form-label [label]="'APP.EMPLOYEES.THEAD.PHONE'"></app-employee-form-label>
+            <input type="tel" class="form-control background-t border-0" formControlName="phoneNumber" [required]="true"/>
+            <app-error-message
+              *ngIf="formGroup.controls.phoneNumber.touched && formGroup.controls.phoneNumber.invalid"
+              [errorMessage]="'APP.EMPLOYEES.FORM.ERROR.REQUIRED'">
+            </app-error-message>
+          </div>
+          <!-- / Új alkalmazott felhasználóneve. -->
+
+          <!-- Új alkalmazott pozíciója. -->
+          <div class="col-12 col-md-6 mb-3">
+            <app-employee-form-label [label]="'APP.EMPLOYEES.THEAD.ROLE'"></app-employee-form-label>
+            <input type="text" class="form-control background-t border-0" formControlName="position" [required]="true"/>
+            <app-error-message
+              *ngIf="formGroup.controls.position.touched && formGroup.controls.position.invalid"
+              [errorMessage]="'APP.EMPLOYEES.FORM.ERROR.REQUIRED'">
+            </app-error-message>
+          </div>
+          <!-- / Új alkalmazott pozíciója. -->
+        </div>
+
+        <div class="row">
+          <!-- Új alkalmazott jelszava. -->
+          <div class="col-12 col-md-6 mb-3">
+            <label>{{ "APP.EMPLOYEES.THEAD.PASSWORD" | translate }}
+              <span *ngIf="!employeeId" class="color-p">*</span>
+            </label>
+            <input type="password" class="form-control background-t border-0" formControlName="password"/>
+            <app-error-message
+              *ngIf="formGroup.controls.password.touched && formGroup.controls.password.errors?.pattern"
+              [errorMessage]="'APP.EMPLOYEES.FORM.ERROR.PATTERN'">
+            </app-error-message>
+            <app-error-message
+              *ngIf="formGroup.controls.password.touched && formGroup.controls.password.invalid && !formGroup.controls.password.errors?.pattern"
+              [errorMessage]="'APP.EMPLOYEES.FORM.ERROR.6CHAR'">
+            </app-error-message>
+          </div>
+          <!-- / Új alkalmazott jelszava. -->
+
+          <!-- Új alkalmazott jelszó megerősítése. -->
+          <div class="col-12 col-md-6 mb-3">
+            <label>{{ "APP.EMPLOYEES.THEAD.REPEAT_PASSWORD" | translate }}
+              <span *ngIf="!employeeId" class="color-p">*</span>
+            </label>
+            <input type="password" class="form-control background-t border-0" formControlName="repeatPassword"/>
+            <app-error-message
+              *ngIf="formGroup.controls.repeatPassword.touched && formGroup.controls.repeatPassword.invalid && !formGroup.controls.repeatPassword.errors?.notMatch"
+              [errorMessage]="'APP.EMPLOYEES.FORM.ERROR.REQUIRED'">
+            </app-error-message>
+            <app-error-message
+              *ngIf="formGroup.controls.repeatPassword.touched && formGroup.controls.repeatPassword.errors?.notMatch"
+              [errorMessage]="'APP.EMPLOYEES.FORM.ERROR.NO_MATCH'">
+            </app-error-message>
+          </div>
+          <!-- / Új alkalmazott jelszó megerősítése. -->
+        </div>
+
+        <!-- Új alkalmazott e-mail címe. -->
+        <div class="mb-3">
+          <app-employee-form-label [label]="'APP.EMPLOYEES.THEAD.EMAIL'"></app-employee-form-label>
+          <input type="email" class="form-control background-t border-0" formControlName="email" [required]="true"/>
+          <app-error-message
+            *ngIf="formGroup.controls.email.touched && formGroup.controls.email.invalid && !formGroup.controls.email.errors?.pattern"
+            [errorMessage]="'APP.EMPLOYEES.FORM.ERROR.REQUIRED'">
+          </app-error-message>
+          <app-error-message
+            *ngIf="formGroup.controls.email.touched && formGroup.controls.email.errors?.pattern"
+            [errorMessage]="'APP.EMPLOYEES.FORM.ERROR.EMAIL'">
+          </app-error-message>
+        </div>
+        <!-- / Új alkalmazott e-mail címe. -->
+
+        <div class="d-flex">
+          <!-- Form reset -->
+          <div class="mt-4 mb-2">
+            <button type="reset" class="btn background-t px-4">
+              {{ "APP.RESET" | translate }}
+            </button>
+          </div>
+          <!-- / Form reset -->
+
+          <!-- Form submit -->
+          <div class="ms-auto mt-4 mb-2">
+            <button [disabled]="formGroup.invalid" class="btn background-p text-white px-4">
+              {{ "APP.SUBMIT" | translate }}
+            </button>
+          </div>
+          <!-- / Form submit -->
+        </div>
+      </form>
+      <!-- / Form -->
+    </div>
+  </div>
+</div>

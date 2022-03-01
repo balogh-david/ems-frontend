@@ -1,0 +1,140 @@
+<div class="table-responsive">
+  <div class="card border-0 pt-3">
+    <!-- Fejléc -->
+    <div class="d-flex pt-2">
+      <p class="border-start border-primary border-3 pb-4 mb-4"></p>
+      <span class="text-break fw-500 ms-3">
+        {{ "APP.PROFILE.TITLE" | translate }}
+      </span>
+    </div>
+    <!-- / Fejléc -->
+
+    <!-- Form -->
+    <div class="row mx-0 mb-4 mt-5">
+      <form class="col-12 col-md-6 px-4 pb-5" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <!-- Új alkalmazott neve. -->
+          <div class="col-12 col-md-6 mb-3">
+            <app-employee-form-label [label]="'APP.EMPLOYEES.THEAD.NAME'"></app-employee-form-label>
+            <input type="text" class="form-control background-t border-0" formControlName="name" [required]="true"/>
+            <app-error-message
+              *ngIf="formGroup.controls.name.touched && formGroup.controls.name.invalid"
+              [errorMessage]="'APP.EMPLOYEES.FORM.ERROR.REQUIRED'">
+            </app-error-message>
+          </div>
+          <!-- / Új alkalmazott neve. -->
+
+          <!-- Új alkalmazott felhasználóneve. -->
+          <div class="col-12 col-md-6 mb-3">
+            <app-employee-form-label [label]="'APP.EMPLOYEES.THEAD.USERNAME'"></app-employee-form-label>
+            <input type="text" class="form-control background-t border-0" formControlName="userName" [required]="true"/>
+            <app-error-message
+              *ngIf="formGroup.controls.userName.touched && formGroup.controls.userName.invalid"
+              [errorMessage]="'APP.EMPLOYEES.FORM.ERROR.6CHAR'">
+            </app-error-message>
+          </div>
+          <!-- / Új alkalmazott felhasználóneve. -->
+        </div>
+
+        <div class="row">
+          <!-- Új alkalmazott telefonszáma. -->
+          <div class="col-12 col-md-6 mb-3">
+            <app-employee-form-label [label]="'APP.EMPLOYEES.THEAD.PHONE'"></app-employee-form-label>
+            <input type="tel" class="form-control background-t border-0" formControlName="phoneNumber" [required]="true"/>
+            <app-error-message
+              *ngIf="formGroup.controls.phoneNumber.touched && formGroup.controls.phoneNumber.invalid"
+              [errorMessage]="'APP.EMPLOYEES.FORM.ERROR.REQUIRED'">
+            </app-error-message>
+          </div>
+          <!-- / Új alkalmazott felhasználóneve. -->
+
+          <!-- Új alkalmazott e-mail címe. -->
+          <div class="col-12 col-md-6 mb-3">
+            <app-employee-form-label [label]="'APP.EMPLOYEES.THEAD.EMAIL'"></app-employee-form-label>
+            <input type="email" class="form-control background-t border-0" formControlName="email" [required]="true"/>
+            <app-error-message
+              *ngIf="formGroup.controls.email.touched && formGroup.controls.email.invalid && !formGroup.controls.email.errors?.pattern"
+              [errorMessage]="'APP.EMPLOYEES.FORM.ERROR.REQUIRED'">
+            </app-error-message>
+            <app-error-message
+              *ngIf="formGroup.controls.email.touched && formGroup.controls.email.errors?.pattern"
+              [errorMessage]="'APP.EMPLOYEES.FORM.ERROR.EMAIL'">
+            </app-error-message>
+          </div>
+          <!-- / Új alkalmazott e-mail címe. -->
+        </div>
+
+        <div class="d-flex">
+          <!-- Form reset -->
+          <div class="mt-4 mb-2">
+            <button type="reset" class="btn background-t px-4">
+              {{ "APP.RESET" | translate }}
+            </button>
+          </div>
+          <!-- / Form reset -->
+
+          <!-- Form submit -->
+          <div class="ms-auto mt-4 mb-2">
+            <button [disabled]="formGroup.invalid" class="btn background-p text-white px-4">
+              {{ "APP.SUBMIT" | translate }}
+            </button>
+          </div>
+          <!-- / Form submit -->
+        </div>
+      </form>
+      <!-- / Form -->
+
+      <!-- pw Form -->
+      <form class="col-12 col-md-6 px-4" [formGroup]="pwFormGroup" (ngSubmit)="pwOnSubmit()">
+        <!-- Új alkalmazott jelszava. -->
+        <div class="mb-3">
+          <app-employee-form-label [label]="'APP.EMPLOYEES.THEAD.PASSWORD'"></app-employee-form-label>
+          <input type="password" class="form-control background-t border-0" formControlName="password" [required]="true"/>
+          <app-error-message
+            *ngIf="pwFormGroup.controls.password.touched && pwFormGroup.controls.password.errors?.pattern"
+            [errorMessage]="'APP.EMPLOYEES.FORM.ERROR.PATTERN'">
+          </app-error-message>
+          <app-error-message
+            *ngIf="pwFormGroup.controls.password.touched && pwFormGroup.controls.password.invalid && !pwFormGroup.controls.password.errors?.pattern"
+            [errorMessage]="'APP.EMPLOYEES.FORM.ERROR.6CHAR'">
+          </app-error-message>
+        </div>
+        <!-- / Új alkalmazott jelszava. -->
+
+        <!-- Új alkalmazott jelszó megerősítése. -->
+        <div class="mb-3">
+          <app-employee-form-label [label]="'APP.EMPLOYEES.THEAD.REPEAT_PASSWORD'"></app-employee-form-label>
+          <input type="password" class="form-control background-t border-0" formControlName="repeatPassword" [required]="true"/>
+          <app-error-message
+            *ngIf="pwFormGroup.controls.repeatPassword.touched && pwFormGroup.controls.repeatPassword.invalid && !pwFormGroup.controls.repeatPassword.errors?.notMatch"
+            [errorMessage]="'APP.EMPLOYEES.FORM.ERROR.REQUIRED'">
+          </app-error-message>
+          <app-error-message
+            *ngIf="pwFormGroup.controls.repeatPassword.touched && pwFormGroup.controls.repeatPassword.errors?.notMatch"
+            [errorMessage]="'APP.EMPLOYEES.FORM.ERROR.NO_MATCH'">
+          </app-error-message>
+        </div>
+        <!-- / Új alkalmazott jelszó megerősítése. -->
+
+        <div class="d-flex">
+          <!-- Form reset -->
+          <div class="mt-4 mb-2">
+            <button type="reset" class="btn background-t px-4">
+              {{ "APP.RESET" | translate }}
+            </button>
+          </div>
+          <!-- / Form reset -->
+
+          <!-- Form submit -->
+          <div class="ms-auto mt-4 mb-2">
+            <button [disabled]="pwFormGroup.invalid" class="btn background-p text-white px-4">
+              {{ "APP.SUBMIT" | translate }}
+            </button>
+          </div>
+          <!-- / Form submit -->
+        </div>
+      </form>
+      <!-- / pw Form -->
+    </div>
+  </div>
+</div>

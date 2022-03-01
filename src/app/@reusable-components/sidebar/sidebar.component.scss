@@ -1,0 +1,28 @@
+@import "src/app/@theme/colors";
+
+div {
+  transition: width 0.6s;
+  .active {
+    color: $primaryColor;
+    background: $tertiaryColor;
+  }
+
+  a {
+    color: inherit;
+    &:hover {
+      @extend .active;
+    }
+
+    i {
+      width: 17px;
+    }
+  }
+}
+
+@media only screen and (max-width: 642px) {
+  div {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+  }
+}

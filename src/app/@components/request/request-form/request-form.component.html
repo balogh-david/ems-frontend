@@ -1,0 +1,42 @@
+<div class="card border-0 pt-4 mb-5">
+  <!-- Fejléc -->
+  <div class="d-flex pt-2">
+    <p class="border-start border-primary border-3 pb-4 mb-4"></p>
+    <span class="fw-500 ms-3">{{ "APP.REQUESTS.CREATE.TITLE" | translate }}</span>
+  </div>
+  <!-- / Fejléc -->
+
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()" class="p-3">
+    <div class="row">
+      <!-- Kérés tárgya -->
+      <div class="col-12 col-md-4 mb-3">
+        <app-employee-form-label [label]="'APP.REQUESTS.THEAD.SUBJECT'"></app-employee-form-label>
+        <select formControlName="subject" class="form-control border-0 background-t">
+          <option [value]="'APP.REQUESTS.CREATE.SUBJECTS.OTHER'">{{ "APP.REQUESTS.CREATE.SUBJECTS.OTHER" | translate }}</option>
+          <option #dayOff [value]="'APP.REQUESTS.CREATE.SUBJECTS.DAYOFF'">{{ "APP.REQUESTS.CREATE.SUBJECTS.DAYOFF" | translate }}</option>
+          <option [value]="'APP.REQUESTS.CREATE.SUBJECTS.TERMINATION'">{{ "APP.REQUESTS.CREATE.SUBJECTS.TERMINATION" | translate }}</option>
+        </select>
+        <app-error-message
+          *ngIf="formGroup.controls.subject.touched && formGroup.controls.subject.invalid"
+          [errorMessage]="'APP.EMPLOYEES.FORM.ERROR.REQUIRED'">
+        </app-error-message>
+      </div>
+      <!-- / Kérés tárgya -->
+
+      <!-- Kérés rövid címe -->
+      <div class="col-12 col-md-8 mb-3">
+        <app-employee-form-label [label]="'APP.REQUESTS.THEAD.DESCRIPTION'"></app-employee-form-label>
+        <input type="text" formControlName="description" class="form-control border-0 background-t"/>
+        <app-error-message
+          *ngIf="formGroup.controls.description.touched && formGroup.controls.description.invalid"
+          [errorMessage]="'APP.EMPLOYEES.FORM.ERROR.REQUIRED'">
+        </app-error-message>
+      </div>
+      <!-- / Kérés rövid címe -->
+    </div>
+
+    <div class="text-end mt-3">
+      <button [disabled]="formGroup.invalid" type="submit" class="btn background-p text-white px-5">{{ "APP.SEND" | translate }}</button>
+    </div>
+  </form>
+</div>

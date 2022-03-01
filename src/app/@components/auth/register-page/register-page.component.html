@@ -1,0 +1,104 @@
+<div class="position-absolute container translate-middle top-50 start-50">
+  <div class="card border-0 shadow py-5">
+    <span class="mx-auto text-center fw-500 w-50 mb-5">
+      {{ "APP.REGISTER.TITLE" | translate }}
+    </span>
+
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+      <!-- Felhasználónév -->
+      <div class="px-3 mb-3">
+        <app-employee-form-label [label]="'APP.EMPLOYEES.THEAD.USERNAME'"></app-employee-form-label>
+        <input type="text" id="username" formControlName="userName" class="form-control background-t border-0" [required]="true"/>
+        <app-error-message
+          *ngIf="formGroup.controls.userName.touched && formGroup.controls.userName.invalid"
+          [errorMessage]="'APP.EMPLOYEES.FORM.ERROR.6CHAR'">
+        </app-error-message>
+      </div>
+      <!-- / Felhasználónév -->
+
+      <!-- Cégnév -->
+      <div class="px-3 mb-3">
+        <app-employee-form-label [label]="'APP.EMPLOYEES.THEAD.COMPANY'"></app-employee-form-label>
+        <input type="text" id="companyName" formControlName="name" class="form-control background-t border-0" [required]="true"/>
+        <app-error-message
+          *ngIf="formGroup.controls.name.touched && formGroup.controls.name.invalid"
+          [errorMessage]="'APP.EMPLOYEES.FORM.ERROR.REQUIRED'">
+        </app-error-message>
+      </div>
+      <!-- / Cégnév -->
+
+      <!-- Email -->
+      <div class="px-3 mb-3">
+        <app-employee-form-label [label]="'APP.EMPLOYEES.THEAD.EMAIL'"></app-employee-form-label>
+        <input type="email" id="email" formControlName="email" class="form-control background-t border-0" [required]="true"/>
+        <app-error-message
+          *ngIf="formGroup.controls.email.touched && formGroup.controls.email.invalid && !formGroup.controls.email.errors?.pattern"
+          [errorMessage]="'APP.EMPLOYEES.FORM.ERROR.REQUIRED'">
+        </app-error-message>
+        <app-error-message
+          *ngIf="formGroup.controls.email.touched && formGroup.controls.email.errors?.pattern"
+          [errorMessage]="'APP.EMPLOYEES.FORM.ERROR.EMAIL'">
+        </app-error-message>
+      </div>
+      <!-- / Email -->
+
+      <!-- Telefonszám -->
+      <div class="px-3 mb-3">
+        <app-employee-form-label [label]="'APP.EMPLOYEES.THEAD.PHONE'"></app-employee-form-label>
+        <input type="text" id="phoneNumber" formControlName="phoneNumber" class="form-control background-t border-0" [required]="true"/>
+        <app-error-message
+          *ngIf="formGroup.controls.phoneNumber.touched && formGroup.controls.phoneNumber.invalid"
+          [errorMessage]="'APP.EMPLOYEES.FORM.ERROR.REQUIRED'">
+        </app-error-message>
+      </div>
+      <!-- / Telefonszám -->
+
+      <!-- Jelszó -->
+      <div class="px-3 mb-3">
+        <app-employee-form-label [label]="'APP.EMPLOYEES.THEAD.PASSWORD'"></app-employee-form-label>
+        <input type="password" id="password" formControlName="password" class="form-control background-t border-0" [required]="true"/>
+        <app-error-message
+          *ngIf="formGroup.controls.password.touched && formGroup.controls.password.errors?.pattern"
+          [errorMessage]="'APP.EMPLOYEES.FORM.ERROR.PATTERN'">
+        </app-error-message>
+        <app-error-message
+          *ngIf="formGroup.controls.password.touched && formGroup.controls.password.invalid && !formGroup.controls.password.errors?.pattern"
+          [errorMessage]="'APP.EMPLOYEES.FORM.ERROR.6CHAR'">
+        </app-error-message>
+      </div>
+      <!-- / Jelszó -->
+
+      <!-- Jelszó megerősítése -->
+      <div class="px-3 mb-3">
+        <app-employee-form-label [label]="'APP.EMPLOYEES.THEAD.REPEAT_PASSWORD'"></app-employee-form-label>
+        <input type="password" id="repeatPassword" formControlName="repeatPassword" class="form-control background-t border-0" [required]="true"/>
+        <app-error-message
+          *ngIf="formGroup.controls.repeatPassword.touched && formGroup.controls.repeatPassword.invalid && !formGroup.controls.repeatPassword.errors?.notMatch"
+          [errorMessage]="'APP.EMPLOYEES.FORM.ERROR.REQUIRED'">
+        </app-error-message>
+        <app-error-message
+          *ngIf="formGroup.controls.repeatPassword.touched && formGroup.controls.repeatPassword.errors?.notMatch"
+          [errorMessage]="'APP.EMPLOYEES.FORM.ERROR.NO_MATCH'">
+        </app-error-message>
+      </div>
+      <!-- / Jelszó megerősítése -->
+
+      <div class="text-end mt-5 px-3">
+        <button [disabled]="formGroup.invalid" type="submit" class="btn background-p text-white w-100">
+          {{ "APP.REGISTER.BTN" | translate }}
+        </button>
+      </div>
+
+      <div class="text-end mt-4 me-4">
+        {{ "APP.REGISTER.HAVE_AN_ACCOUNT" | translate }}
+        <a [routerLink]="'../../auth/login'">
+          {{ "APP.LOGIN.BTN" | translate }}
+        </a>
+      </div>
+
+      <div class="position-absolute top-0 end-63">
+        <app-language-selector class="border-0"></app-language-selector>
+      </div>
+    </form>
+  </div>
+</div>

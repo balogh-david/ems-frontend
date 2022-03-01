@@ -1,0 +1,50 @@
+<div class="position-absolute container translate-middle top-50 start-50">
+  <div class="card border-0 shadow py-5">
+    <span class="text-center fw-500 mb-5">
+      {{ "APP.LOGIN.TITLE" | translate }}
+    </span>
+
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+      <!-- Felhasználónév -->
+      <div class="px-3 mb-3">
+        <app-employee-form-label [label]="'APP.EMPLOYEES.THEAD.USERNAME'"></app-employee-form-label>
+        <input type="text" id="userName" formControlName="userName" class="form-control background-t border-0" [required]="true"/>
+      </div>
+      <!-- / Felhasználónév -->
+
+      <!-- Jelszó -->
+      <div class="px-3 mb-3">
+        <app-employee-form-label [label]="'APP.EMPLOYEES.THEAD.PASSWORD'"></app-employee-form-label>
+        <input type="password" id="password" formControlName="password" class="form-control background-t border-0" [required]="true"/>
+      </div>
+      <!-- / Jelszó -->
+
+      <p *ngIf="invalidUsernameOrPassword"
+         class="text-danger small text-center">
+        {{ "APP.LOGIN.ERRORS.INCORRECT" | translate }}
+      </p>
+
+      <p *ngIf="unknownError"
+         class="text-danger small text-center">
+        {{ "APP.LOGIN.ERRORS.UNKNOWN" | translate }}
+      </p>
+
+      <div class="text-end mt-5 px-3">
+        <button [disabled]="formGroup.invalid" type="submit" class="btn background-p text-white w-100">
+          {{ "APP.LOGIN.BTN" | translate }}
+        </button>
+      </div>
+
+      <div class="text-end mt-4 me-4">
+        {{ "APP.REGISTER.DONT_HAVE_ACCOUNT" | translate }}
+        <a [routerLink]="'../../auth/register'">
+          {{ "APP.REGISTER.BTN" | translate }}
+        </a>
+      </div>
+
+      <div class="position-absolute top-0 end-63">
+        <app-language-selector class="border-0"></app-language-selector>
+      </div>
+    </form>
+  </div>
+</div>

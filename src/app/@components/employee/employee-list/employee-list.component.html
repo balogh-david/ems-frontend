@@ -1,0 +1,66 @@
+<div class="table-responsive">
+  <div class="card border-0 pt-3">
+    <!-- Fejléc -->
+    <div class="d-flex pt-2">
+      <p class="border-start border-primary border-3 mb-4">
+        <span class="fw-500 ms-3">
+          {{ "APP.EMPLOYEES.HEADER" | translate }}
+        </span>
+      </p>
+
+      <div appPermission="COMPANY" class="ms-auto mt-n6 me-3">
+        <app-pagination [numberOfRows]="employees.length" (methodCall)="fetchData($event.from, $event.howMuch)"></app-pagination>
+
+        <a [routerLink]="'add'" class="btn background-p text-white ms-4">
+          {{ "APP.NEW" | translate }}
+        </a>
+      </div>
+    </div>
+    <!-- / Fejléc -->
+
+    <table *ngIf="employees.length; else empty" class="table table-sm table-borderless">
+      <thead>
+      <!-- Táblázat fejléce -->
+      <tr class="background-t text-uppercase">
+        <th class="small fw-light py-3 ps-3">{{ "APP.EMPLOYEES.THEAD.NAME" | translate }}</th>
+        <th class="small fw-light py-3">{{ "APP.EMPLOYEES.THEAD.USERNAME" | translate }}</th>
+        <th class="small fw-light py-3">{{ "APP.EMPLOYEES.THEAD.EMAIL" | translate }}</th>
+        <th class="small fw-light py-3">{{ "APP.EMPLOYEES.THEAD.ROLE" | translate }}</th>
+        <th></th>
+      </tr>
+      <!-- / Táblázat fejléce -->
+      </thead>
+      <tbody class="border-top-0">
+      <tr *ngFor="let employee of employees">
+        <!-- Egy alkalmazott neve -->
+        <td class="align-middle fw-500 ps-3 py-3">{{ employee.name }}</td>
+        <!-- Egy alkalmazott felhasználóneve -->
+        <td class="align-middle py-3">{{ employee.userName }}</td>
+
+        <!-- Egy alkalmazott e-mail címe -->
+        <td class="align-middle py-3 text-nowrap">
+          {{ employee.email }}
+          <a [href]="mailTo(employee.email)" class="ms-1">
+            <i class="bi bi-send-plus-fill color-p"></i>
+          </a>
+        </td>
+
+        <!-- Egy alkalmazott pozíciója -->
+        <td class="align-middle py-3">{{ employee.position }}</td>
+
+        <!-- Funkciók -->
+        <td class="align-middle text-end">
+          <app-employee-dropdown role="button" (eventEmitter)="callEmit($event)" [id]="employee.id"></app-employee-dropdown>
+        </td>
+        <!-- / Funkciók -->
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<ng-template #empty>
+  <div class="text-center py-5">
+    {{ "APP.EMPTY" | translate }}
+  </div>
+</ng-template>

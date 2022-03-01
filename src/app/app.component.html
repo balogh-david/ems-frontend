@@ -1,0 +1,13 @@
+<div *ngIf="localStorageService.loadToken(); else noAuthorized" class="d-flex">
+  <app-sidebar></app-sidebar>
+  <div class="m-3 w-100">
+    <app-navbar></app-navbar>
+    <div class="container-fluid px-0 mt-4">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+
+<ng-template #noAuthorized>
+  <router-outlet></router-outlet>
+</ng-template>

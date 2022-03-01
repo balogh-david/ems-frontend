@@ -1,0 +1,46 @@
+@import "./colors";
+
+@media only screen and (max-width: 760px) {
+  table {
+    thead {
+      display: none;
+    }
+
+    th {
+      letter-spacing: 1px;
+    }
+
+    td {
+      display: block;
+
+      &:first-of-type {
+        margin-top: 20px;
+      }
+
+      &.py-3 {
+        padding: 0 0 4px 20px !important;
+      }
+
+      position: relative;
+      text-align: left;
+
+      &:before {
+        display: inline-block;
+        margin-left: -100%;
+        width: 100%;
+        white-space: nowrap;
+      }
+    }
+  }
+}
+
+table {
+  tr:not(thead tr) {
+    border-bottom: 1px solid $tertiaryColor;
+    &:nth-of-type(2n) {
+      background: lighten($tertiaryColor, 2.3);
+    }
+  }
+
+
+}
